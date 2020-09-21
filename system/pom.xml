@@ -29,6 +29,11 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.ashbell</groupId>
+            <artifactId>server</artifactId>
+        </dependency>
+
         <!--spring热部署-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
