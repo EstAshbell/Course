@@ -19,6 +19,6 @@ public class TestService {
     private TestMapper testMapper;
 
     public List<Test> test(){
-        return testMapper.list();
+        return testMapper.selectByExample(null);
     }
 }
