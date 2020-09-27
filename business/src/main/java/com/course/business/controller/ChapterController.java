@@ -1,7 +1,7 @@
 package com.course.business.controller;
 
-import com.course.server.domain.Test;
-import com.course.server.service.TestService;
+import com.course.server.domain.Chapter;
+import com.course.server.service.ChapterService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,13 +14,13 @@ import java.util.List;
  * @description:
  */
 @RestController
-public class TestController {
+public class ChapterController {
 
     @Resource
-    private TestService testService;
+    private ChapterService chapterService;
 
-    @RequestMapping("test")
-    public List<Test> test1(){
-        return testService.test();
+    @RequestMapping("chapter")
+    public List<Chapter> chapter(){
+        return chapterService.chapter();
     }
 }
