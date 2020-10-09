@@ -978,7 +978,8 @@
     export default {
         name: 'chapter',
         mounted:function() { //初始化加载
-            this.$parent.activeSidebar("business-chapter-sidebar");
+            //siderbar激活样式方法一
+            // this.$parent.activeSidebar("business-chapter-sidebar");
         },
         methods:{
         }

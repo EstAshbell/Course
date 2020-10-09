@@ -8,7 +8,8 @@
     export default {
         name: "welcome",
         mounted: function() {  //初始化加载
-            this.$parent.activeSidebar("welcome-sidebar");
+            //siderbar激活样式方法一
+            // this.$parent.activeSidebar("welcome-sidebar");
         },
         methods: {
         }
