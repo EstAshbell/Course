@@ -6,11 +6,11 @@
 
 <script>
     export default {
-        name: 'welcome',
-        mounted:function() { //初始化加载
+        name: "welcome",
+        mounted: function() {  //初始化加载
             this.$parent.activeSidebar("welcome-sidebar");
         },
-        methods:{
+        methods: {
         }
     }
 </script>

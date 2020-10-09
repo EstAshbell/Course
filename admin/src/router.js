@@ -1,29 +1,32 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Login from './views/login.vue'
-import Admin from './views/admin'
-import Welcome from './views/admin/welcome'
-import Chapter from './views/admin/chapter'
+import Vue from "vue"
+import Router from "vue-router"
+import Login from "./views/login.vue"
+import Admin from "./views/admin"
+import Welcome from "./views/admin/welcome"
+import Chapter from "./views/admin/chapter"
 
 Vue.use(Router);
 
 export default new Router({
-    mode: 'history',
+    mode: "history",
     base: process.env.BASE_URL,
     routes: [{
-        path: '*',
+        path: "*",
         redirect: "/login",
     }, {
-        path: '/login',
+        path: "/login",
         component: Login
     }, {
-        path: '/admin',
+        path: "/",
+        name: "admin",
         component: Admin,
         children:[{
-            path:'welcome', //子路由不能斜杠/开头
+            path:"welcome", //子路由不能斜杠/开头
+            name:"welcome",
             component:Welcome
         },{
-            path:'business/chapter',
+            path:"business/chapter",
+            name:"business/chapter",
             component:Chapter
         }]
     }]

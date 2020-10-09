@@ -354,7 +354,7 @@
 
                 <ul class="nav nav-list">
                     <li class=""  id="welcome-sidebar">
-                        <router-link to="/admin/welcome">
+                        <router-link to="/welcome">
                             <i class="menu-icon fa fa-tachometer"></i>
                             <span class="menu-text"> 欢迎 </span>
                         </router-link>
@@ -404,7 +404,7 @@
 
                         <ul class="submenu">
                             <li class="active" id="business-chapter-sidebar">
-                                <router-link to="/admin/business/chapter">
+                                <router-link to="/business/chapter">
                                     <i class="menu-icon fa fa-caret-right"></i>
                                     大章管理
                                 </router-link>
@@ -491,7 +491,7 @@
                 $("#"+id).siblings().find("li").removeClass("active");
                 $("#"+id).addClass("active");
                 //父级菜单，去除opten active样式，增加opten cative样式
-                let parent = $("#"+id).parent("li");
+                let parent = $("#"+id).parents("li");
                 if(parent){
                     parent.siblings().removeClass("open active");
                     parent.addClass("open active");
