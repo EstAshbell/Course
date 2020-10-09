@@ -23,7 +23,7 @@ export default new Router({
             path:'welcome', //子路由不能斜杠/开头
             component:Welcome
         },{
-            path:'chapter',
+            path:'business/chapter',
             component:Chapter
         }]
     }]
