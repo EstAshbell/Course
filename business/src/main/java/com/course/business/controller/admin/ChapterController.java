@@ -5,6 +5,7 @@ import com.course.server.dto.ChapterDto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
 import com.course.server.service.ChapterService;
+import com.course.server.util.ValidatorUtil;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,10 @@ public class ChapterController {
     }
     @RequestMapping("/save")
     public ResponseDto save(@RequestBody ChapterDto chapterDto) {
+        ValidatorUtil.require(chapterDto.getName(), "名称");
+        ValidatorUtil.require(chapterDto.getCourseId(), "课程ID");
+        ValidatorUtil.length(chapterDto.getCourseId(), "名称",1,8);
+
         ResponseDto<Object> responseDto = new ResponseDto<>();
         chapterService.save(chapterDto);
         responseDto.setContent(chapterDto);
