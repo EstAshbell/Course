@@ -114,8 +114,9 @@
                     cancelButtonText :'取消'
                 }).then((result) => {
                     if (result.value) {
+                        Loading.show();
                         _this.$ajax.delete("http://127.0.0.1:9000/business/admin/chapter/delete/"+id,_this.chapter).then((response)=>{
-                            console.log("删除大章结果：",response);
+                            Loading.hide();
                             var resp = response.data;
                             if (resp.success){
                                 _this.list(1);
@@ -130,8 +131,9 @@
             },
             save(){
                 let _this = this;
+                Loading.show();
                 _this.$ajax.post("http://127.0.0.1:9000/business/admin/chapter/save",_this.chapter).then((response)=>{
-                    console.log("保存大章结果：",response);
+                    Loading.hide();
                     var resp = response.data;
                     if (resp.success){
                         $("#form-modal").modal("hide");
@@ -153,11 +155,12 @@
             },
             list(page){
                 let _this = this;
+                Loading.show();
                 _this.$ajax.post("http://127.0.0.1:9000/business/admin/chapter/list",{
                     page:page,
                     size:_this.$refs.pagination.size
                 }).then((response)=>{
-                    console.log("大章列表："+response);
+                    Loading.hide()
                     var resp = response.data;
                     _this.chapters = resp.content.list;
                     _this.$refs.pagination.render(page,resp.content.total);
