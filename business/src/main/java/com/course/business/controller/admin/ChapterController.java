@@ -31,13 +31,6 @@ public class ChapterController {
 
     /*
      * @title : 查询
-     * @date : 2020/10/20 21:04
-     * @param: pageDto
-     * @return com.course.server.dto.ResponseDto
-     * @throws
-     * @author xyl
-     * @description
-     *
      */
     @RequestMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto) {
@@ -48,13 +41,6 @@ public class ChapterController {
     }
     /*
      * @title : 保存
-     * @date : 2020/10/20 21:04
-     * @param: chapterDto
-     * @return com.course.server.dto.ResponseDto
-     * @throws
-     * @author xyl
-     * @description
-     *
      */
     @RequestMapping("/save")
     public ResponseDto save(@RequestBody ChapterDto chapterDto) {
@@ -69,13 +55,6 @@ public class ChapterController {
     }
     /*
      * @title : 删除
-     * @date : 2020/10/20 21:03
-     * @param: id
-     * @return com.course.server.dto.ResponseDto
-     * @throws
-     * @author xyl
-     * @description
-     *
      */
     @DeleteMapping("/delete/{id}")
     public ResponseDto delete(@PathVariable("id") String id) {
