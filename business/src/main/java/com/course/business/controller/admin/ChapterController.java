@@ -29,19 +29,35 @@ public class ChapterController {
     @Resource
     private ChapterService chapterService;
 
+    /*
+     * @title : 查询
+     * @date : 2020/10/20 21:04
+     * @param: pageDto
+     * @return com.course.server.dto.ResponseDto
+     * @throws
+     * @author xyl
+     * @description
+     *
+     */
     @RequestMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto) {
-        LOG.info("pageDto: {}",pageDto);
-
         ResponseDto<Object> responseDto = new ResponseDto<>();
         chapterService.list(pageDto);
         responseDto.setContent(pageDto);
         return responseDto;
     }
+    /*
+     * @title : 保存
+     * @date : 2020/10/20 21:04
+     * @param: chapterDto
+     * @return com.course.server.dto.ResponseDto
+     * @throws
+     * @author xyl
+     * @description
+     *
+     */
     @RequestMapping("/save")
     public ResponseDto save(@RequestBody ChapterDto chapterDto) {
-        LOG.info("chapterDto: {}",chapterDto);
-
         ValidatorUtil.require(chapterDto.getName(), "名称");
         ValidatorUtil.require(chapterDto.getCourseId(), "课程ID");
         ValidatorUtil.length(chapterDto.getCourseId(), "名称",1,8);
@@ -51,10 +67,18 @@ public class ChapterController {
         responseDto.setContent(chapterDto);
         return responseDto;
     }
+    /*
+     * @title : 删除
+     * @date : 2020/10/20 21:03
+     * @param: id
+     * @return com.course.server.dto.ResponseDto
+     * @throws
+     * @author xyl
+     * @description
+     *
+     */
     @DeleteMapping("/delete/{id}")
-    public ResponseDto save(@PathVariable("id") String id) {
-        LOG.info("id: {}", id);
-
+    public ResponseDto delete(@PathVariable("id") String id) {
         ResponseDto<Object> responseDto = new ResponseDto<>();
         chapterService.delete(id);
         return responseDto;

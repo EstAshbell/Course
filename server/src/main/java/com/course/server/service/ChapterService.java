@@ -28,6 +28,16 @@ public class ChapterService {
     @Resource
     private ChapterMapper chapterMapper;
 
+    /*
+     * @title : 查询列表
+     * @date : 2020/10/20 21:08
+     * @param: pageDto
+     * @return void
+     * @throws
+     * @author xyl
+     * @description
+     *
+     */
     public void list(PageDto pageDto){
         PageHelper.startPage(pageDto.getPage(), pageDto.getSize());
         ChapterExample chapterExample = new ChapterExample();
@@ -43,6 +53,16 @@ public class ChapterService {
         }
         pageDto.setList(chapterDtos);
     }
+    /*
+     * @title : 有id时修改，没有时新增
+     * @date : 2020/10/20 21:08
+     * @param: chapterDto
+     * @return void
+     * @throws
+     * @author xyl
+     * @description
+     *
+     */
     public void save(ChapterDto chapterDto){
         Chapter chapter = CopyUtil.copy(chapterDto, Chapter.class);
         if(StringUtils.isEmpty(chapter.getId())){
@@ -52,14 +72,43 @@ public class ChapterService {
         }
     }
 
+    /*
+     * @title : 新增
+     * @date : 2020/10/20 21:07
+     * @param: chapter
+     * @return void
+     * @throws
+     * @author xyl
+     * @description
+     *
+     */
     private void insert(Chapter chapter){
         chapter.setId(UuidUtil.getShortUuid());
         chapterMapper.insert(chapter);
     }
+    /*
+     * @title : 更新
+     * @date : 2020/10/20 21:07
+     * @param: chapter
+     * @return void
+     * @throws
+     * @author xyl
+     * @description
+     *
+     */
     private void update(Chapter chapter){
         chapterMapper.updateByPrimaryKey(chapter);
     }
-
+    /*
+     * @title : 删除
+     * @date : 2020/10/20 21:07
+     * @param: id
+     * @return void
+     * @throws
+     * @author xyl
+     * @description
+     *
+     */
     public void delete(String id) {
         chapterMapper.deleteByPrimaryKey(id);
     }
