@@ -1,12 +1,9 @@
-package com.course.business.controller.admin;
+package com.course.${module}.controller.admin;
 
-import com.course.server.domain.${Domain};
 import com.course.server.dto.${Domain}Dto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
 import com.course.server.service.${Domain}Service;
-import com.course.server.util.ValidatorUtil;
-import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +21,7 @@ import java.util.List;
 public class ${Domain}Controller {
 
     private static final Logger LOG = LoggerFactory.getLogger(${Domain}Controller.class);
-    public static final String BUSINESS_NAME = "大章";
+    public static final String BUSINESS_NAME = "${tableNameCn}";
 
     @Resource
     private ${Domain}Service ${domain}Service;
@@ -44,7 +41,6 @@ public class ${Domain}Controller {
      */
     @RequestMapping("/save")
     public ResponseDto save(@RequestBody ${Domain}Dto ${domain}Dto) {
-
         ResponseDto<Object> responseDto = new ResponseDto<>();
         ${domain}Service.save(${domain}Dto);
         responseDto.setContent(${domain}Dto);

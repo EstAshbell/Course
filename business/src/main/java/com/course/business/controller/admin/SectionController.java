@@ -1,12 +1,9 @@
 package com.course.business.controller.admin;
 
-import com.course.server.domain.Section;
 import com.course.server.dto.SectionDto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
 import com.course.server.service.SectionService;
-import com.course.server.util.ValidatorUtil;
-import org.apache.ibatis.annotations.Param;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -44,7 +41,6 @@ public class SectionController {
      */
     @RequestMapping("/save")
     public ResponseDto save(@RequestBody SectionDto sectionDto) {
-
         ResponseDto<Object> responseDto = new ResponseDto<>();
         sectionService.save(sectionDto);
         responseDto.setContent(sectionDto);
