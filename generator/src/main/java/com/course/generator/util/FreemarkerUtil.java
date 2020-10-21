@@ -9,6 +9,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * @author: xyl
@@ -24,10 +25,10 @@ public class FreemarkerUtil {
         cfg.setObjectWrapper(new DefaultObjectWrapper(Configuration.VERSION_2_3_29));
         temp = cfg.getTemplate(ftlName);
     }
-    public static void generator(String fileName) throws IOException, TemplateException {
+    public static void generator(String fileName, Map map) throws IOException, TemplateException {
         FileWriter fw = new FileWriter(fileName);
         BufferedWriter bw = new BufferedWriter(fw);
-        temp.process(null, bw);
+        temp.process(map, bw);
         bw.flush();
         fw.close();
     }
