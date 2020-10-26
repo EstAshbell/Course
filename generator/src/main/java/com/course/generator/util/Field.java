@@ -10,6 +10,8 @@ public class Field {
     private String comment; // 注释：课程|ID
     private Boolean nullAble; // 是否可为空
     private Integer length; // 字符串长度
+    private Boolean enums; // 是否是枚举
+    private String enumsConst; // 枚举常量 COURSE_LEVEL
 
     public String getName() {
         return name;
@@ -51,20 +53,20 @@ public class Field {
         this.type = type;
     }
 
-    public String getJavaType() {
-        return javaType;
-    }
-
-    public void setJavaType(String javaType) {
-        this.javaType = javaType;
-    }
-
     public String getComment() {
         return comment;
     }
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public String getJavaType() {
+        return javaType;
+    }
+
+    public void setJavaType(String javaType) {
+        this.javaType = javaType;
     }
 
     public Boolean getNullAble() {
@@ -83,18 +85,37 @@ public class Field {
         this.length = length;
     }
 
+    public Boolean getEnums() {
+        return enums;
+    }
+
+    public void setEnums(Boolean enums) {
+        this.enums = enums;
+    }
+
+    public String getEnumsConst() {
+        return enumsConst;
+    }
+
+    public void setEnumsConst(String enumsConst) {
+        this.enumsConst = enumsConst;
+    }
+
     @Override
     public String toString() {
-        return "Field{" +
-                "name='" + name + '\'' +
-                ", nameHump='" + nameHump + '\'' +
-                ", nameBigHump='" + nameBigHump + '\'' +
-                ", nameCn='" + nameCn + '\'' +
-                ", type='" + type + '\'' +
-                ", javaType='" + javaType + '\'' +
-                ", comment='" + comment + '\'' +
-                ", nullAble=" + nullAble +
-                ", length=" + length +
-                '}';
+        final StringBuffer sb = new StringBuffer("Field{");
+        sb.append("name='").append(name).append('\'');
+        sb.append(", nameHump='").append(nameHump).append('\'');
+        sb.append(", nameBigHump='").append(nameBigHump).append('\'');
+        sb.append(", nameCn='").append(nameCn).append('\'');
+        sb.append(", type='").append(type).append('\'');
+        sb.append(", javaType='").append(javaType).append('\'');
+        sb.append(", comment='").append(comment).append('\'');
+        sb.append(", nullAble=").append(nullAble);
+        sb.append(", length=").append(length);
+        sb.append(", enums=").append(enums);
+        sb.append(", enumsConst='").append(enumsConst).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }
