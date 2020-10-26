@@ -8,6 +8,8 @@ public class Field {
     private String type; // 字段类型：char(8)
     private String javaType; // java类型：String
     private String comment; // 注释：课程|ID
+    private Boolean nullAble; // 是否可为空
+    private Integer length; // 字符串长度
 
     public String getName() {
         return name;
@@ -49,14 +51,6 @@ public class Field {
         this.type = type;
     }
 
-    public String getComment() {
-        return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     public String getJavaType() {
         return javaType;
     }
@@ -65,17 +59,42 @@ public class Field {
         this.javaType = javaType;
     }
 
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Boolean getNullAble() {
+        return nullAble;
+    }
+
+    public void setNullAble(Boolean nullAble) {
+        this.nullAble = nullAble;
+    }
+
+    public Integer getLength() {
+        return length;
+    }
+
+    public void setLength(Integer length) {
+        this.length = length;
+    }
+
     @Override
     public String toString() {
-        final StringBuffer sb = new StringBuffer("Field{");
-        sb.append("name='").append(name).append('\'');
-        sb.append(", nameHump='").append(nameHump).append('\'');
-        sb.append(", nameBigHump='").append(nameBigHump).append('\'');
-        sb.append(", nameCn='").append(nameCn).append('\'');
-        sb.append(", type='").append(type).append('\'');
-        sb.append(", javaType='").append(javaType).append('\'');
-        sb.append(", comment='").append(comment).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return "Field{" +
+                "name='" + name + '\'' +
+                ", nameHump='" + nameHump + '\'' +
+                ", nameBigHump='" + nameBigHump + '\'' +
+                ", nameCn='" + nameCn + '\'' +
+                ", type='" + type + '\'' +
+                ", javaType='" + javaType + '\'' +
+                ", comment='" + comment + '\'' +
+                ", nullAble=" + nullAble +
+                ", length=" + length +
+                '}';
     }
 }
