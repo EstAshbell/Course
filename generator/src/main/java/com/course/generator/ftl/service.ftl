@@ -48,7 +48,7 @@ public class ${Domain}Service {
      * 保存，id有值时更新，无值时新增
      */
     public void save(${Domain}Dto ${domain}Dto) {
-        ${Domain} ${domain} = CopyUtil.copy(${domain}Dto, ${Domain}.class);
+    ${Domain} ${domain} = CopyUtil.copy(${domain}Dto, ${Domain}.class);
         if (StringUtils.isEmpty(${domain}Dto.getId())) {
             this.insert(${domain});
         } else {
@@ -60,16 +60,20 @@ public class ${Domain}Service {
      * 新增
      */
     private void insert(${Domain} ${domain}) {
+        <#list typeSet as type>
+            <#if type=='Date'>
         Date now = new Date();
-        <#list fieldList as field>
-            <#if field.nameHump=='createdAt'>
-        ${domain}.setCreatedAt(now);
-            </#if>
-            <#if field.nameHump=='updatedAt'>
-        ${domain}.setUpdatedAt(now);
             </#if>
         </#list>
-        ${domain}.setId(UuidUtil.getShortUuid());
+        <#list fieldList as field>
+            <#if field.nameHump=='createdAt'>
+                ${domain}.setCreatedAt(now);
+            </#if>
+            <#if field.nameHump=='updatedAt'>
+                ${domain}.setUpdatedAt(now);
+            </#if>
+        </#list>
+    ${domain}.setId(UuidUtil.getShortUuid());
         ${domain}Mapper.insert(${domain});
     }
 
@@ -79,7 +83,7 @@ public class ${Domain}Service {
     private void update(${Domain} ${domain}) {
         <#list fieldList as field>
             <#if field.nameHump=='updatedAt'>
-        ${domain}.setUpdatedAt(new Date());
+                ${domain}.setUpdatedAt(new Date());
             </#if>
         </#list>
         ${domain}Mapper.updateByPrimaryKey(${domain});
