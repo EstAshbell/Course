@@ -40,7 +40,7 @@ public class ServerGenerator {
         System.out.println("表："+tableElement.attributeValue("tableName"));
         System.out.println("Domain："+tableElement.attributeValue("domainObjectName"));
 
-        List<Field> fieldList = DbUtil.getColumnByTableName(domain);
+        List<Field> fieldList = DbUtil.getColumnByTableName(tableName);
         Set<String> typeSet = getJavaTypes(fieldList);
         Map<String, Object> map = new HashMap<>();
         map.put("Domain", Domain);
