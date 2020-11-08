@@ -1,9 +1,11 @@
 package com.course.business.controller.admin;
 
 import com.course.server.dto.CategoryDto;
+import com.course.server.dto.CourseCategoryDto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
 import com.course.server.service.CategoryService;
+import com.course.server.service.CourseCategoryService;
 import com.course.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,6 +28,9 @@ public class CategoryController {
 
     @Resource
     private CategoryService categoryService;
+
+    @Resource
+    private CourseCategoryService courseCategoryService;
 
     /*
      * @title : 查询不分页
@@ -72,4 +77,17 @@ public class CategoryController {
         categoryService.delete(id);
         return responseDto;
     }
+
+    /**
+     * 查找课程下所有分类
+     * @param courseId
+     */
+    @PostMapping(value = "/list-category/{courseId}")
+    public ResponseDto listByCourse(@PathVariable("courseId") String courseId){
+        ResponseDto responseDto = new ResponseDto();
+        List<CourseCategoryDto> list = courseCategoryService.listByCourse(courseId);
+        responseDto.setContent(list);
+        return responseDto;
+    }
+
 }

@@ -87,4 +87,16 @@ public class CourseCategoryService {
             insert(courseCategory);
         }
     }
+
+    /**
+     * 查找课程下所有分类
+     * @param courseId
+     */
+    public List<CourseCategoryDto> listByCourse(String courseId){
+        CourseCategoryExample courseCategoryExample = new CourseCategoryExample();
+        courseCategoryExample.createCriteria().andCourseIdEqualTo(courseId);
+        List<CourseCategory> courseCategories = courseCategoryMapper.selectByExample(courseCategoryExample);
+        return CopyUtil.copyList(courseCategories, CourseCategoryDto.class);
+    }
+
 }
