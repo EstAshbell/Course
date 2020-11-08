@@ -1,5 +1,6 @@
 package com.course.business.controller.admin;
 
+import com.course.server.dto.CourseContentDto;
 import com.course.server.dto.CourseDto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
@@ -61,4 +62,19 @@ public class CourseController {
         courseService.delete(id);
         return responseDto;
     }
+    @GetMapping("/find-content/{id}")
+    public ResponseDto findContent(@PathVariable String id){
+        ResponseDto responseDto = new ResponseDto();
+        CourseContentDto contentDto = courseService.findContent(id);
+        responseDto.setContent(contentDto);
+        return responseDto;
+    }
+    @PostMapping("/save-content")
+    public ResponseDto saveContent(@RequestBody CourseContentDto contentDto) {
+        ResponseDto responseDto = new ResponseDto();
+        int i = courseService.saveContent(contentDto);
+        responseDto.setContent(i);
+        return responseDto;
+    }
+
 }
