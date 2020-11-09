@@ -1,9 +1,6 @@
 package com.course.business.controller.admin;
 
-import com.course.server.dto.CourseContentDto;
-import com.course.server.dto.CourseDto;
-import com.course.server.dto.PageDto;
-import com.course.server.dto.ResponseDto;
+import com.course.server.dto.*;
 import com.course.server.service.CourseService;
 import com.course.server.util.ValidatorUtil;
 import org.slf4j.Logger;
@@ -74,6 +71,14 @@ public class CourseController {
         ResponseDto responseDto = new ResponseDto();
         int i = courseService.saveContent(contentDto);
         responseDto.setContent(i);
+        return responseDto;
+    }
+
+    @RequestMapping(value = "/sort")
+    public ResponseDto sort(@RequestBody SortDto sortDto) {
+        LOG.info("更新排序");
+        ResponseDto responseDto = new ResponseDto();
+        courseService.sort(sortDto);
         return responseDto;
     }
 
