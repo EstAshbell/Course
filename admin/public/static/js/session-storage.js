@@ -1,3 +1,5 @@
+SESSION_KEY_COURSE = "SESSION_KEY_COURSE"; //课程管理页面点击大章管理时，保存课程信息
+SESSION_KEY_CHAPTER = "SESSION_KEY_CHAPTER" //大章管理页面点击小节管理时，保存小节信息
 SessionStorage = {
     get: function (key) {
         let v = sessionStorage.getItem(key);
