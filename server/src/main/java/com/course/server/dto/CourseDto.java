@@ -64,6 +64,21 @@ public class CourseDto {
      */
     private Integer sort;
 
+
+
+    public String getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(String teacherId) {
+        this.teacherId = teacherId;
+    }
+
+    /**
+     * teacherId
+     */
+    private String teacherId;
+
     /**
      * 创建时间
      */
@@ -77,27 +92,6 @@ public class CourseDto {
     private Date updatedAt;
 
     private List<Category> categorys;
-
-    @Override
-    public String toString() {
-        final StringBuffer sb = new StringBuffer("CourseDto{");
-        sb.append("id='").append(id).append('\'');
-        sb.append(", name='").append(name).append('\'');
-        sb.append(", summary='").append(summary).append('\'');
-        sb.append(", time=").append(time);
-        sb.append(", price=").append(price);
-        sb.append(", image='").append(image).append('\'');
-        sb.append(", level='").append(level).append('\'');
-        sb.append(", charge='").append(charge).append('\'');
-        sb.append(", status='").append(status).append('\'');
-        sb.append(", enroll=").append(enroll);
-        sb.append(", sort=").append(sort);
-        sb.append(", createdAt=").append(createdAt);
-        sb.append(", updatedAt=").append(updatedAt);
-        sb.append(", categorys=").append(categorys);
-        sb.append('}');
-        return sb.toString();
-    }
 
     public List<Category> getCategorys() {
         return categorys;
@@ -211,5 +205,25 @@ public class CourseDto {
         this.updatedAt = updatedAt;
     }
 
-
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer("CourseDto{");
+        sb.append("id='").append(id).append('\'');
+        sb.append(", name='").append(name).append('\'');
+        sb.append(", summary='").append(summary).append('\'');
+        sb.append(", time=").append(time);
+        sb.append(", price=").append(price);
+        sb.append(", image='").append(image).append('\'');
+        sb.append(", level='").append(level).append('\'');
+        sb.append(", charge='").append(charge).append('\'');
+        sb.append(", status='").append(status).append('\'');
+        sb.append(", enroll=").append(enroll);
+        sb.append(", sort=").append(sort);
+        sb.append(", teacherId='").append(teacherId).append('\'');
+        sb.append(", createdAt=").append(createdAt);
+        sb.append(", updatedAt=").append(updatedAt);
+        sb.append(", categorys=").append(categorys);
+        sb.append('}');
+        return sb.toString();
+    }
 }
