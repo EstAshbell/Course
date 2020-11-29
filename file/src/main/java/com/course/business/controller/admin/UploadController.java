@@ -36,13 +36,13 @@ public class UploadController {
         // 保存文件到本地
         String fileName = file.getOriginalFilename();
         String key = UuidUtil.getShortUuid();
-        String fullPath = FILE_PATH + key + "-" + fileName;
+        String fullPath = FILE_PATH +"teacher/"+ key + "-" + fileName;
         File dest = new File(fullPath);
         file.transferTo(dest);
         LOG.info(dest.getAbsolutePath());
 
         ResponseDto responseDto = new ResponseDto();
-        responseDto.setContent(FILE_DOMAIN+key+"-"+fileName);
+        responseDto.setContent(FILE_DOMAIN+"f/teacher/"+key+"-"+fileName);
         return responseDto;
     }
 }
