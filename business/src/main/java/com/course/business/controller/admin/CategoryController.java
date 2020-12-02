@@ -1,9 +1,9 @@
-package com.course.file.controller.admin;
+package com.course.business.controller.admin;
 
+import com.course.server.dto.CategoryDto;
 import com.course.server.dto.PageDto;
 import com.course.server.dto.ResponseDto;
-import com.course.server.dto.TeacherDto;
-import com.course.server.service.TeacherService;
+import com.course.server.service.CategoryService;
 import com.course.server.util.ValidatorUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,14 +18,16 @@ import java.util.List;
  * @description:
  */
 @RestController
-@RequestMapping("/admin/teacher")
-public class TeacherController {
+@RequestMapping("/admin/category")
+public class CategoryController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TeacherController.class);
-    public static final String BUSINESS_NAME = "讲师";
+    private static final Logger LOG = LoggerFactory.getLogger(CategoryController.class);
+    public static final String BUSINESS_NAME = "分类";
 
     @Resource
-    private TeacherService teacherService;
+    private CategoryService categoryService;
+
+
 
     /*
      * @title : 查询不分页
@@ -33,7 +35,7 @@ public class TeacherController {
     @RequestMapping("/all")
     public ResponseDto all() {
         ResponseDto<Object> responseDto = new ResponseDto<>();
-        List<TeacherDto> list = teacherService.all();
+        List<CategoryDto> list = categoryService.all();
         responseDto.setContent(list);
         return responseDto;
     }
@@ -44,7 +46,7 @@ public class TeacherController {
     @RequestMapping("/list")
     public ResponseDto list(@RequestBody PageDto pageDto) {
         ResponseDto<Object> responseDto = new ResponseDto<>();
-        teacherService.list(pageDto);
+        categoryService.list(pageDto);
         responseDto.setContent(pageDto);
         return responseDto;
     }
@@ -52,19 +54,15 @@ public class TeacherController {
      * @title : 保存
      */
     @RequestMapping("/save")
-    public ResponseDto save(@RequestBody TeacherDto teacherDto) {
+    public ResponseDto save(@RequestBody CategoryDto categoryDto) {
         //校验
-        ValidatorUtil.require(teacherDto.getName(), "姓名");
-        ValidatorUtil.length(teacherDto.getName(),"姓名",1,50);
-        ValidatorUtil.length(teacherDto.getNickname(),"昵称",1,50);
-        ValidatorUtil.length(teacherDto.getImage(),"头像",1,100);
-        ValidatorUtil.length(teacherDto.getPosition(),"职位",1,50);
-        ValidatorUtil.length(teacherDto.getMotto(),"座右铭",1,50);
-        ValidatorUtil.length(teacherDto.getIntro(),"简介",1,500);
+        ValidatorUtil.require(categoryDto.getParent(), "父id");
+        ValidatorUtil.require(categoryDto.getName(), "名称");
+        ValidatorUtil.length(categoryDto.getName(),"名称",1,50);
 
         ResponseDto<Object> responseDto = new ResponseDto<>();
-        teacherService.save(teacherDto);
-        responseDto.setContent(teacherDto);
+        categoryService.save(categoryDto);
+        responseDto.setContent(categoryDto);
         return responseDto;
     }
     /*
@@ -73,7 +71,10 @@ public class TeacherController {
     @DeleteMapping("/delete/{id}")
     public ResponseDto delete(@PathVariable("id") String id) {
         ResponseDto<Object> responseDto = new ResponseDto<>();
-        teacherService.delete(id);
+        categoryService.delete(id);
         return responseDto;
     }
+
+
+
 }

@@ -21,13 +21,13 @@
             suffixs: {
                 default: []
             },
-            use:{
-                default:""
+            use: {
+                default: ""
             },
             afterUpload: {
                 type: Function,
                 default: null
-            }
+            },
         },
         data: function () {
             return {
@@ -70,7 +70,8 @@
             },
 
             selectFile () {
-                $("#file-upload-input").trigger("click");
+                let _this = this;
+                $("#" + _this.inputId + "-input").trigger("click");
             }
         }
     }

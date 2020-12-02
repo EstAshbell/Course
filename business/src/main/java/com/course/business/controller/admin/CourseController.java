@@ -1,6 +1,7 @@
-package com.course.file.controller.admin;
+package com.course.business.controller.admin;
 
 import com.course.server.dto.*;
+import com.course.server.service.CourseCategoryService;
 import com.course.server.service.CourseService;
 import com.course.server.util.ValidatorUtil;
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author: xyl
@@ -23,6 +25,9 @@ public class CourseController {
 
     @Resource
     private CourseService courseService;
+
+    @Resource
+    private CourseCategoryService courseCategoryService;
 
     /*
      * @title : 查询
@@ -79,6 +84,18 @@ public class CourseController {
         LOG.info("更新排序");
         ResponseDto responseDto = new ResponseDto();
         courseService.sort(sortDto);
+        return responseDto;
+    }
+
+    /**
+     * 查找课程下所有分类
+     * @param courseId
+     */
+    @PostMapping(value = "/list-category/{courseId}")
+    public ResponseDto listByCourse(@PathVariable("courseId") String courseId){
+        ResponseDto responseDto = new ResponseDto();
+        List<CourseCategoryDto> list = courseCategoryService.listByCourse(courseId);
+        responseDto.setContent(list);
         return responseDto;
     }
 
