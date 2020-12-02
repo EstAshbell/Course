@@ -1,4 +1,4 @@
-package com.course.business.controller;
+package com.course.file.controller;
 
 import com.course.server.dto.ResponseDto;
 import com.course.server.exception.ValidatorException;

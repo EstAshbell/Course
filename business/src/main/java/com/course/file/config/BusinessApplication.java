@@ -1,4 +1,4 @@
-package com.course.business.config;
+package com.course.file.config;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
@@ -13,16 +13,16 @@ import org.springframework.core.env.ConfigurableEnvironment;
 @EnableEurekaClient
 @ComponentScan("com.course")
 @MapperScan("com.course.server.mapper")
-public class FileApplication {
+public class BusinessApplication {
 
-    private static final Logger LOG = LoggerFactory.getLogger(FileApplication.class);
+    private static final Logger LOG = LoggerFactory.getLogger(BusinessApplication.class);
 
     public static void main(String[] args) {
 //        SpringApplication.run(EurekaApplication.class, args);
-        SpringApplication app = new SpringApplication(FileApplication.class);
+        SpringApplication app = new SpringApplication(BusinessApplication.class);
         ConfigurableEnvironment env = app.run(args).getEnvironment();
         LOG.info("启动成功！");
-        LOG.info("File地址：\thttp://127.0.0.1:{}",env.getProperty("server.port"));
+        LOG.info("Business地址：\thttp://127.0.0.1:{}",env.getProperty("server.port"));
     }
 
 }

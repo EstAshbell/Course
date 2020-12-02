@@ -1,4 +1,4 @@
-package com.course.business.controller.admin;
+package com.course.file.controller.admin;
 
 import com.course.server.dto.*;
 import com.course.server.service.CourseService;
